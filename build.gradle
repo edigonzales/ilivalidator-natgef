@@ -1,0 +1,33 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jars.interlis.ch/' }
+}
+
+dependencies {
+    implementation 'ch.interlis:ilivalidator:1.14.3'
+    implementation 'io.github.sogis:ilivalidator-custom-functions-geometries:0.0.8'
+    implementation 'ch.geowerkstatt.ilivalidator.extensions.functions:geow-interlis-functions:0.2.0'
+    implementation 'ch.geowerkstatt.ilivalidator.extensions.functions:interlis-functions-ngk-so:1.0.2'
+
+    testImplementation libs.junit.jupiter
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+application {
+    mainClass = 'org.example.App'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
